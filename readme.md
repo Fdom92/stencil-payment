@@ -21,6 +21,14 @@ Then you need to pass the method data, at the moment payment api only accept thi
 - unionpay
 - visa
 
+```
+[
+  {
+    supportedMethods: ["visa", "mastercard"]
+  }
+]
+```
+
 Next you need to pass the details of the transaction, an object with displayItems and total.
 
 displayItems is an array with the items to buy like this:
