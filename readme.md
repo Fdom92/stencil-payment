@@ -1,10 +1,10 @@
 # st-payment
 
-st-payment is a web component built with [Stencil](https://stenciljs.com/) that allows you to use the Payment request API.
+st-payment is a web component built with [Stencil](https://stenciljs.com/) that allows you to use the [Payment Request API](https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/).
 
 ## How to use
 
-First of all you need at this to your index file:
+First of all you have to add this to your head tag on index file:
 
 ```HTML
 <script src="https://storage.googleapis.com/prshim/v1/payment-shim.js"/>
@@ -20,6 +20,8 @@ Then you need to pass the method data, at the moment payment api only accept thi
 - mastercard
 - unionpay
 - visa
+
+Like this one:
 
 ```
 [
@@ -47,6 +49,7 @@ displayItems is an array with the items to buy like this:
 ```
 
 And the total a single object with the final value:
+
 ```
 {
     label: "Total",
@@ -54,7 +57,7 @@ And the total a single object with the final value:
 }
 ```
 
-The last parameter, `timeout` its just to pass the minutes to cancel the request.
+The last parameter, `timeout` its just to pass the number of minutes to cancel the request.
 
 ## Demo
 
