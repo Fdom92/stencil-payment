@@ -25,6 +25,10 @@ export class DemoPayment {
     @State() options = {};
     @State() timeout = 20;
 
+    @State() callback = function () {
+        console.log('Payment success!!');
+    };
+
   render() {
     return (
         <div>
@@ -34,6 +38,7 @@ export class DemoPayment {
             details={this.details}
             options={this.options}
             timeout={this.timeout}
+            cb={this.callback}
             >
             </st-payment>
         </div>
