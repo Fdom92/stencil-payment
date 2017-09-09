@@ -5,16 +5,17 @@
   "scripts": {
     "build": "stencil build",
     "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
+    "test": "stencil build --watch",
     "serve": "stencil-dev-server",
     "start": "npm run dev",
     "publish": "npm run build && node scripts/publish.js"
   },
   "dependencies": {
-    "@stencil/core": "next"
+    "@stencil/core": "0.0.4"
   },
   "devDependencies": {
-    "@stencil/dev-server": "latest",
-    "@stencil/utils": "latest"
+    "@stencil/dev-server": "0.0.16",
+    "@stencil/utils": "0.0.4"
   },
   "repository": {
     "type": "git",

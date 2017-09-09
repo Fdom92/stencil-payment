@@ -1,0 +1,34 @@
+<!DOCTYPE html><html dir="ltr" lang="en"><head><style data-styles="">demo-payment{font-family:Arial, Helvetica, sans-serif;}demo-payment.💎,st-payment.💎{visibility:inherit;}</style>
+  <meta charset="utf-8">
+  <title>Payment API</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="theme-color" content="black">
+
+  <script src="https://storage.googleapis.com/prshim/v1/payment-shim.js"></script>
+
+  
+  
+</head>
+<body> <demo-payment ssrv="0" class="💎"><st-payment ssrc="0.0." ssrv="1" class="💎"><div ssrc="1.0"><button ssrc="1.0"><!--s.1.0-->Buy<!--/--></button></div></st-payment></demo-payment> <script>/*! Built with http://stenciljs.com */
+
+(function (window, document, appNamespace, appCore, appCoreEs5, components, x) {
+    'use strict';
+    // create global namespace if it doesn't already exist
+
+    (window[appNamespace] = window[appNamespace] || {}).components = components = components || [];
+    // auto hide components until they been fully hydrated
+    // reusing the "x" variable from the args for funzies
+    x = document.createElement('style');
+    x.setAttribute('data-styles', '');
+    x.innerHTML = (components.map(function (c) {
+        return c[0];
+    }).join(',') + '{visibility:hidden}.💎{visibility:inherit}').toLowerCase();
+    x.innerHTML += 'ion-app:not(.💎){display:none}';
+    document.head.insertBefore(x, document.head.firstChild);
+    // request the core file this browser needs
+    x = document.createElement('script');
+    x.src = window.customElements ? appCore : appCoreEs5;
+    document.head.appendChild(x);
+})(window, document, "App","build/app/app.core.js","build/app/app.core.ce.js",[["DEMO-PAYMENT","demo-payment",{"$":"demo-payment"}],["ST-PAYMENT","demo-payment",{"$":"demo-payment"},[["details",1],["methodData",1],["options",1],["timeout",1]]]]);</script></body></html>

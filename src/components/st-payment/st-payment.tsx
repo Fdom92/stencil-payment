@@ -13,42 +13,32 @@ export class StPayment {
   @Prop() timeout: any;    // timeout in minutes to abort the request
 
   doPayment() {
-    // Create Payment request
-    let request = new PaymentRequest(
-      this.methodData,
-      this.details,
-      this.options
-    );
+    if ('PaymentRequest' in window) {
+      let request = new PaymentRequest(
+        this.methodData,
+        this.details,
+        this.options
+      );
+      this.show(request);
+    } else {
+        console.log('Payment Request API not supported');
+    }
+  }
 
-    request.show().then(function(paymentResponse) {
-      let paymentData = {
-        // payment method string, e.g. “visa”
-        method: paymentResponse.methodName,
-        // payment details as you requested
-        details: paymentResponse.details
-      };
-      console.log('Payment success', paymentData);
+  show(request) {
+    request.show()
+    .then(function(paymentResponse) {
       paymentResponse.complete("success");
     }).catch(function(err) {
-      console.error("Uh oh, something bad happened", err.message);
+      console.error(err.message);
     });
-
-    // Add some timeout to abort request
-    let paymentTimeout = window.setTimeout(function() {
-      window.clearTimeout(paymentTimeout);
-      request.abort().then(function() {
-        console.log(`Payment timed out after ${this.timeout} minutes.`);
-      }).catch(function() {
-        console.log('Unable to abort.');
-      });
-    }, this.timeout * 60 * 1000);
   }
 
   render() {
     return (
       <div>
-        <button onClick={() => this.doPayment()}>
-          Buy
+        <button class="btn" type="button" onClick={() => this.doPayment()}>
+          <span>Buy</span>
         </button>
       </div>
     );

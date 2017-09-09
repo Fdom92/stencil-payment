@@ -1,7 +1,6 @@
 exports.config = {
-  generateCollection: true,
   bundles: [
-    { components: ['st-payment'] }
+    { components: ['st-payment', 'demo-payment'] }
   ]
 };
 
