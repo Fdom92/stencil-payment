@@ -10,7 +10,11 @@ First of all you have to add this to your head tag on index file:
 <script src="https://storage.googleapis.com/prshim/v1/payment-shim.js"/>
 ```
 
-Then you need to pass the method data, at the moment payment api only accept this cards:
+and check if your browser supports it [here](https://caniuse.com/#search=payment).
+
+
+### Parameters
+Now, first of all, you need to pass the method data, at the moment payment api only accept this cards:
 
 - amex
 - diners
@@ -31,9 +35,7 @@ Like this one:
 ]
 ```
 
-Next you need to pass the details of the transaction, an object with displayItems and total.
-
-displayItems is an array with the items to buy like this:
+Next you need to pass the details of the transaction, an object with displayItems like this:
 
 ```
 [
@@ -48,7 +50,7 @@ displayItems is an array with the items to buy like this:
 }
 ```
 
-And the total a single object with the final value:
+And the total object with the final value:
 
 ```
 {
@@ -57,7 +59,19 @@ And the total a single object with the final value:
 }
 ```
 
-The last parameter, `timeout` its just to pass the number of minutes to cancel the request.
+And the last parameters, `callback` its to make some callback after the success.
+
+### Methods
+
+There is a public method `abort` to call if you want to abort the request due to some error. You can pass a callback to be executed after abort.
+
+You can call it like this:
+
+```
+const payment = document.querySelector('st-payment');
+payment.abort(callback);
+```
+Then this function will check if there is a request and then will execute the abort method.
 
 ## Demo
 
@@ -72,20 +86,21 @@ export class StPayment {
     @State details = {
         displayItems: [{
             label: "Original donation amount",
-            amount: { currency: "USD", value : "65.00" }, // US$65.00
+            amount: { currency: "USD", value : "65.00" } // US$65.00
         },
         {
             label: "Friends and family discount",
-            amount: { currency: "USD", value : "-10.00" }, // -US$10.00
-            pending: true // The price is not determined yet
+            amount: { currency: "USD", value : "-10.00" } // -US$10.00
         }],
         total: {
             label: "Total",
-            amount: { currency: "USD", value : "55.00" }, // US$55.00
+            amount: { currency: "USD", value : "55.00" } // US$55.00
         }
     };
     @State options = {}
-    @State timeout = 20
+    @State() callback = function () {
+        console.log('Payment success from callback!!');
+    };
 
   render() {
     return (
@@ -93,7 +108,7 @@ export class StPayment {
       methodData={this.methodData}
       details={this.details}
       options={this.options}
-      timeout={this.timeout}
+      callback={this.callback}
       >
       </st-payment>
     );
