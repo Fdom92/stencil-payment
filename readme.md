@@ -61,7 +61,7 @@ And the total object with the final value:
 
 And the last parameters, `callback` its to make some callback after the success.
 
-### Methods
+### Methods
 
 There is a public method `abort` to call if you want to abort the request due to some error. You can pass a callback to be executed after abort.
 
