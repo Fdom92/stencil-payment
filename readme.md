@@ -2,6 +2,23 @@
 
 st-payment is a web component built with [Stencil](https://stenciljs.com/) that allows you to use the [Payment Request API](https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/).
 
+## Getting Started
+
+To try this component:
+
+```bash
+git clone git@github.com:Fdom92/stencil-payment.git
+cd my-app
+git remote rm origin
+```
+
+and run:
+
+```bash
+npm install
+npm start
+```
+
 ## How to use
 
 First of all you have to add this to your head tag on index file:
