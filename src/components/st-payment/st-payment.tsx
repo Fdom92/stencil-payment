@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, State, Method } from '@stencil/core';
 
 
 @Component({
@@ -7,37 +7,45 @@ import { Component, Prop } from '@stencil/core';
 })
 export class StPayment {
 
-  @Prop() methodData: any; // required payment method data
-  @Prop() details: any;    // required information about transaction
-  @Prop() options: any;    // optional parameter for things like shipping, etc
-  @Prop() timeout: any;    // timeout in minutes to abort the request
-  @Prop() callback: any;         // callback function to execute after payment
+  @State() request        : any; // The request
+
+  @Prop() methodData : any; // required payment method data
+  @Prop() details    : any; // required information about transaction
+  @Prop() options    : any; // optional parameter for things like shipping, etc
+  @Prop() callback   : any; // callback function to execute after payment
 
   doPayment() {
     if ('PaymentRequest' in window) {
-      let request = new PaymentRequest(
+      this.request = new PaymentRequest(
         this.methodData,
         this.details,
         this.options
       );
-      if (this.callback)
-        this.show(request, this.callback);
-      else
-        this.show(request, null);
-      
+
+      this.show(this.callback);
     } else {
         console.log('Payment Request API not supported');
     }
   }
 
-  show(request, cb) {
-    request.show()
+  show(cb) {
+    this.request.show()
     .then(function(paymentResponse) {
       cb && cb();
       paymentResponse.complete("success");
     }).catch(function(err) {
       console.error(err.message);
     });
+  }
+
+  @Method()
+  abort(ok) {
+    if (this.request)
+      this.request.abort()
+      .then(ok)
+      .catch(function(err) {
+        console.error(err.message);
+      });
   }
 
   render() {

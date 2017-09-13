@@ -7,7 +7,13 @@ import { Component, State } from '@stencil/core';
 })
 export class DemoPayment {
 
-    @State() methodData = [{ supportedMethods: ["visa", "mastercard"]}];
+    @State() methodData = [
+        { supportedMethods:
+            [
+            'visa', 'mastercard', 'amex', 'discover', 'maestro',
+            'diners', 'jcb', 'unionpay', 'bitcoin'
+            ]
+        }];
     @State() details = {
         displayItems: [{
             label: "Original donation amount",
@@ -23,25 +29,23 @@ export class DemoPayment {
         }
     };
     @State() options = {};
-    @State() timeout = 20;
 
     @State() callback = function () {
-        console.log('Payment success!!');
+        console.log('Payment success from callback!!');
     };
 
-  render() {
-    return (
-        <div>
-            <h2>Check out the new Payment API</h2>
-            <st-payment
-            methodData={this.methodData}
-            details={this.details}
-            options={this.options}
-            timeout={this.timeout}
-            cb={this.callback}
-            >
-            </st-payment>
-        </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <h2>Check out the new Payment API</h2>
+                <st-payment
+                methodData={this.methodData}
+                details={this.details}
+                options={this.options}
+                callback={this.callback}
+                >
+                </st-payment>
+            </div>
+        );
+    }
 }
