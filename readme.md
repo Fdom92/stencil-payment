@@ -2,6 +2,8 @@
 
 st-payment is a web component built with [Stencil](https://stenciljs.com/) that allows you to use the [Payment Request API](https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/).
 
+![Demo](./docs/video.gif)
+
 ## Getting Started
 
 To try this component:
@@ -27,10 +29,8 @@ First of all you have to add this to your head tag on index file:
 <script src="https://storage.googleapis.com/prshim/v1/payment-shim.js"/>
 ```
 
-and check if your browser supports it [here](https://caniuse.com/#search=payment).
-
-
 ### Parameters
+
 Now, first of all, you need to pass the method data, at the moment payment api only accept this cards:
 
 - amex
@@ -90,46 +90,6 @@ payment.abort(callback);
 ```
 Then this function will check if there is a request and then will execute the abort method.
 
-## Demo
+## Browser Support
 
-```
-@Component({
-  tag: 'demo',
-  styleUrl: 'demo.scss'
-})
-export class StPayment {
-
-    @State methodData = [{ supportedMethods: ["visa", "mastercard"]}];
-    @State details = {
-        displayItems: [{
-            label: "Original donation amount",
-            amount: { currency: "USD", value : "65.00" } // US$65.00
-        },
-        {
-            label: "Friends and family discount",
-            amount: { currency: "USD", value : "-10.00" } // -US$10.00
-        }],
-        total: {
-            label: "Total",
-            amount: { currency: "USD", value : "55.00" } // US$55.00
-        }
-    };
-    @State options = {}
-    @State() callback = function () {
-        console.log('Payment success from callback!!');
-    };
-
-  render() {
-    return (
-      <st-payment
-      methodData={this.methodData}
-      details={this.details}
-      options={this.options}
-      callback={this.callback}
-      >
-      </st-payment>
-    );
-  }
-}
-```
-
+![Browser Suport](/docs/browser-support.png)
