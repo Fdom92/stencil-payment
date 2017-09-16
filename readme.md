@@ -1,5 +1,7 @@
 # st-payment
 
+![Logo](./docs/logo.svg)
+
 st-payment is a web component built with [Stencil](https://stenciljs.com/) that allows you to use the [Payment Request API](https://developers.google.com/web/fundamentals/discovery-and-monetization/payment-request/).
 
 ![Demo](./docs/video.gif)
