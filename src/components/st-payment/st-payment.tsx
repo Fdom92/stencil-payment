@@ -13,7 +13,8 @@ export class StPayment {
   @Prop() details    : any; // required information about transaction
   @Prop() options    : any; // optional parameter for things like shipping, etc
   @Prop() callback   : any; // callback function to execute after payment
-
+  @Prop() buttonLabel: string = 'Buy';
+   
   doPayment() {
     if ('PaymentRequest' in window) {
       this.request = new PaymentRequest(
@@ -52,7 +53,7 @@ export class StPayment {
     return (
       <div>
         <button class="btn" type="button" onClick={() => this.doPayment()}>
-          <span>Buy</span>
+          <span>{this.buttonLabel}</span>
         </button>
       </div>
     );
