@@ -1,6 +1,6 @@
 {
   "name": "stencil-payment",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Web Component built with Stencil to use Payment API",
   "main": "dist/collection/index.js",
   "types": "dist/collection/index.d.ts",
