@@ -1,6 +1,6 @@
 {
-  "name": "st-payment",
-  "version": "0.0.1",
+  "name": "stencil-payment",
+  "version": "0.0.2",
   "description": "Web Component built with Stencil to use Payment API",
   "main": "dist/collection/index.js",
   "types": "dist/collection/index.d.ts",
@@ -12,10 +12,8 @@
   "scripts": {
     "build": "stencil build",
     "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
-    "test": "stencil build --watch",
     "serve": "stencil-dev-server",
-    "start": "npm run dev",
-    "publish": "npm run build && node scripts/publish.js"
+    "start": "npm run dev"
   },
   "dependencies": {
     "@stencil/core": "0.0.5"
