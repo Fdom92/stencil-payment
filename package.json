@@ -13,14 +13,20 @@
     "build": "stencil build",
     "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
     "serve": "stencil-dev-server",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "test": "jest --no-cache",
+    "test.watch": "jest --watch --no-cache",
+    "deploy-demo": "bs --no-yarn --no-cleanup --directory ./demo",
+    "deploy": "np"
   },
   "dependencies": {
-    "@stencil/core": "0.0.5"
+    "@stencil/core": "0.0.6"
   },
   "devDependencies": {
     "@stencil/dev-server": "0.0.17",
-    "@stencil/utils": "0.0.4"
+    "@stencil/utils": "0.0.4",
+    "branchsite": "^4.0.2",
+    "np": "^2.16.0"
   },
   "repository": {
     "type": "git",

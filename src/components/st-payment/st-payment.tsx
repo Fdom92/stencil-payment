@@ -2,18 +2,17 @@ import { Component, Prop, State, Method } from '@stencil/core';
 
 
 @Component({
-  tag: 'st-payment',
-  styleUrl: 'st-payment.scss'
+  tag: 'st-payment'
 })
 export class StPayment {
 
-  @State() request        : any; // The request
+  @State() request    : any; // The request
 
-  @Prop() methodData : any; // required payment method data
-  @Prop() details    : any; // required information about transaction
-  @Prop() options    : any; // optional parameter for things like shipping, etc
-  @Prop() callback   : any; // callback function to execute after payment
-  @Prop() buttonLabel: string = 'Buy';
+  @Prop() methodData  : any; // required payment method data
+  @Prop() details     : any; // required information about transaction
+  @Prop() options     : any; // optional parameter for things like shipping, etc
+  @Prop() callback    : any; // callback function to execute after payment
+  @Prop() buttonLabel : string = 'Buy';
    
   doPayment() {
     if ('PaymentRequest' in window) {
@@ -52,7 +51,7 @@ export class StPayment {
   render() {
     return (
       <div>
-        <button class="btn" type="button" onClick={() => this.doPayment()}>
+        <button type="button" onClick={() => this.doPayment()}>
           <span>{this.buttonLabel}</span>
         </button>
       </div>
