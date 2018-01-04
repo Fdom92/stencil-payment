@@ -27,12 +27,12 @@ npm start
 
 ### Script tag
 
-- Put `<script src='https://unpkg.com/stencil-payment@0.0.3/dist/stpayment.js'></script>` in the head of your index.html
+- Put `<script src='https://unpkg.com/stencil-payment@latest/dist/payment.js'></script>` in the head of your index.html
 - Then you can use the element `<st-payment>` anywhere in your template, JSX, html etc
 
 ### Node Modules
 - Run `npm install stencil-payment --save`
-- Put a script tag similar to this `<script src='node_modules/stencil-payment/dist/stpayment.js></script>` in the head of your index.html
+- Put a script tag similar to this `<script src='node_modules/stencil-payment/dist/payment.js></script>` in the head of your index.html
 - Then you can use the element `<st-payment>` anywhere in your template, JSX, html etc
 
 ### In a stencil-starter app
@@ -48,9 +48,21 @@ First of all you have to add this to your head tag on index file:
 <script src="https://storage.googleapis.com/prshim/v1/payment-shim.js"/>
 ```
 
-### Parameters
+## Parameters
 
-Now, first of all, you need to pass the method data, at the moment payment api only accept this cards:
+### methodData
+
+You need to pass the method data:
+
+```js
+var methodData = [
+  {
+    supportedMethods: ["visa", "mastercard"]
+  }
+]
+```
+
+At the moment payment api only accept this cards:
 
 - amex
 - diners
@@ -61,53 +73,56 @@ Now, first of all, you need to pass the method data, at the moment payment api o
 - unionpay
 - visa
 
-Like this one:
+### details
 
-```
-[
-  {
-    supportedMethods: ["visa", "mastercard"]
-  }
-]
-```
+You need to pass the details of the transaction, an object with displayItems and the total object with the final value:
 
-Next you need to pass the details of the transaction, an object with displayItems like this:
-
-```
-[
+```js
+var details = {
+  displayItems: [
     {
-        label: "Name of the item or product",
-        amount: { currency: "USD", value : "55.00" }
+      label: "Original donation amount",
+      amount: { currency: "USD", value : "65.00" }, // US$65.00
     },
     {
-        label: "Name of the item or product",
-        amount: { currency: "USD", value : "55.00" }
+      label: "Friends and family discount",
+      amount: { currency: "USD", value : "-10.00" }, // -US$10.00
+      pending: true // The price is not determined yet
     }
-}
-```
-
-And the total object with the final value:
-
-```
-{
+  ],
+  total:  {
     label: "Total",
-    amount: { currency: "USD", value : "100.00" }
+    amount: { currency: "USD", value : "55.00" }, // US$55.00
+  }
 }
 ```
 
-And the last parameters, `callback` its to make some callback after the success.
+### callback
 
-### Methods
+You can pass a `callback` function if you want to make some checks after success.
 
-There is a public method `abort` to call if you want to abort the request due to some error. You can pass a callback to be executed after abort.
+## Methods
 
-You can call it like this:
 
+### pay
+
+You can make the payment request anytime with the `pay` method like this:
+
+```js
+element = document.querySelector('st-payment');
+element.pay();
 ```
-const payment = document.querySelector('st-payment');
-payment.abort(callback);
+
+This way you can bind this function to your own pay button or wherever you want.
+
+### abort
+
+You can abort the transaction with the `abort`method anytime due to some error.
+
+```js
+element = document.querySelector('st-payment');
+element.abort();
 ```
-Then this function will check if there is a request and then will execute the abort method.
 
 ## Browser Support
 

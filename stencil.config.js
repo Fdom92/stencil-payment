@@ -1,7 +1,6 @@
 exports.config = {
-  namespace: 'stpayment',
+  namespace: 'payment',
   generateDistribution: true,
-  generateWWW: false,
   bundles: [
     { components: ['st-payment'] }
   ]

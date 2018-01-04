@@ -6,23 +6,37 @@ import { Component, Prop, State, Method } from '@stencil/core';
 })
 export class StPayment {
 
-  @State() request    : any; // The request
+  // The request
+  @State() request    : any;
 
-  @Prop() methodData  : any; // required payment method data
-  @Prop() details     : any; // required information about transaction
-  @Prop() options     : any; // optional parameter for things like shipping, etc
-  @Prop() callback    : any; // callback function to execute after payment
-  @Prop() buttonLabel : string = 'Buy';
+  // required payment method data
+  @Prop() methodData  : any = [{
+      supportedMethods: ["visa", "mastercard"]
+  }]; 
+
+  // required information about transaction
+  @Prop() details     : any;
+
+  // optional parameter for things like shipping, etc
+  @Prop() options     : any = {};
+
+  // callback function to execute after payment
+  @Prop() callback    : any;
    
-  doPayment() {
+  @Method()
+  pay() {
     if ('PaymentRequest' in window) {
-      this.request = new PaymentRequest(
-        this.methodData,
-        this.details,
-        this.options
-      );
-
-      this.show(this.callback);
+      if(this.details) {
+        this.request = new PaymentRequest(
+          this.methodData,
+          this.details,
+          this.options
+        );
+  
+        this.show(this.callback);
+      } else {
+        console.error('Not provided the details of the transaction');
+      }
     } else {
         console.log('Payment Request API not supported');
     }
@@ -49,12 +63,6 @@ export class StPayment {
   }
 
   render() {
-    return (
-      <div>
-        <button type="button" onClick={() => this.doPayment()}>
-          <span>{this.buttonLabel}</span>
-        </button>
-      </div>
-    );
+    return;
   }
 }

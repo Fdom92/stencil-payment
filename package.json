@@ -1,9 +1,9 @@
 {
   "name": "stencil-payment",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Web Component built with Stencil to use Payment API",
-  "main": "dist/collection/index.js",
-  "types": "dist/collection/index.d.ts",
+  "main": "dist/payment.js",
+  "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "files": [
     "dist/"
@@ -15,18 +15,14 @@
     "serve": "stencil-dev-server",
     "start": "npm run dev",
     "test": "jest --no-cache",
-    "test.watch": "jest --watch --no-cache",
-    "deploy-demo": "bs --no-yarn --no-cleanup --directory ./demo",
-    "deploy": "np"
+    "test.watch": "jest --watch --no-cache"
   },
   "dependencies": {
-    "@stencil/core": "0.0.6"
+    "@stencil/core": "0.1.1-0"
   },
   "devDependencies": {
     "@stencil/dev-server": "0.0.17",
-    "@stencil/utils": "0.0.4",
-    "branchsite": "^4.0.2",
-    "np": "^2.16.0"
+    "@stencil/utils": "0.0.4"
   },
   "repository": {
     "type": "git",

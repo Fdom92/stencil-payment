@@ -4,38 +4,36 @@
  * and imports for stencil collections that might be configured in your stencil.config.js file
  */
 
-import { StPayment as StPayment } from './components/st-payment/st-payment';
 
-interface HTMLStPaymentElement extends StPayment, HTMLElement {
-}
-declare var HTMLStPaymentElement: {
-  prototype: HTMLStPaymentElement;
-  new (): HTMLStPaymentElement;
-};
+import {
+  StPayment as StPayment
+} from './components/st-payment/st-payment';
+
 declare global {
+  interface HTMLStPaymentElement extends StPayment, HTMLElement {
+  }
+  var HTMLStPaymentElement: {
+    prototype: HTMLStPaymentElement;
+    new (): HTMLStPaymentElement;
+  };
   interface HTMLElementTagNameMap {
-      "st-payment": HTMLStPaymentElement;
+    "st-payment": HTMLStPaymentElement;
   }
   interface ElementTagNameMap {
-      "st-payment": HTMLStPaymentElement;
+    "st-payment": HTMLStPaymentElement;
   }
   namespace JSX {
-      interface IntrinsicElements {
-          "st-payment": JSXElements.StPaymentAttributes;
-      }
+    interface IntrinsicElements {
+      "st-payment": JSXElements.StPaymentAttributes;
+    }
   }
   namespace JSXElements {
-      export interface StPaymentAttributes extends HTMLAttributes {
-          mode?: string,
-          color?: string,
-        
-          abort?: any,
-          methodData?: any,
-          details?: any,
-          options?: any,
-          callback?: any,
-          buttonLabel?: string
-      }
+    export interface StPaymentAttributes extends HTMLAttributes {
+      callback?: any;
+      details?: any;
+      methodData?: any;
+      options?: any;
+    }
   }
 }
 
