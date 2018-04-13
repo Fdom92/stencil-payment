@@ -27,7 +27,7 @@ npm start
 
 ### Script tag
 
-- Put `<script src='https://unpkg.com/stencil-payment@latest/dist/payment.js'></script>` in the head of your index.html
+- Put `<script src='https://unpkg.com/stencil-payment@latest/dist/stpayment.js'></script>` in the head of your index.html
 - Then you can use the element `<st-payment>` anywhere in your template, JSX, html etc
 
 ### Node Modules
