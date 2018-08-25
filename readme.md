@@ -150,7 +150,6 @@ element.show();
 
 This way you can bind this function to your own pay button or wherever you want.
 
-<<<<<<< HEAD
 ### abort
 
 You can abort the transaction with the `abort` method anytime due to some error.
@@ -159,6 +158,3 @@ You can abort the transaction with the `abort` method anytime due to some error.
 element = document.querySelector('wc-payment');
 element.abort();
 ```
-=======
-![Browser Suport](/docs/browser-support.png)
->>>>>>> 752058179ec12f04f1d7719ecbb2d5e9f87ffd93
