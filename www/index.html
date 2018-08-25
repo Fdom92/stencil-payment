@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Web Payment API</title>
-  <script src="/build/payment.js"></script>
-
-</head>
-<body>
-
-  <st-payment></st-payment>
-
-
-  <script>
-    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-      // auto-unregister service worker during dev mode
-      navigator.serviceWorker.ready.then(function(registration) {
-        registration.unregister().then(function() { location.reload(true) });
-      });
-    }
-  </script>
-
-</body>
-</html>
+<!DOCTYPE html><html dir="ltr" lang="en"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"> <title>Web Payment API</title> <script data-resources-url="/build/payment/">/*!
+ * Built with http://stenciljs.com
+ * 2018-07-25T16:01:53
+ */
+!function(e,t,n,r,s,o,i,a,c,u,p,l,d,m){for((p=e.payment=e.payment||{}).components=c,(d=c.filter(function(e){return e[2]}).map(function(e){return e[0]})).length&&((l=t.createElement("style")).innerHTML=d.join()+"{visibility:hidden}.hydrated{visibility:inherit}",l.setAttribute("data-styles",""),t.head.insertBefore(l,t.head.firstChild)),function(e,t,n){(e["s-apps"]=e["s-apps"]||[]).push("payment"),n.componentOnReady||(n.componentOnReady=function(){var t=this;function n(n){if(t.nodeName.indexOf("-")>0){for(var r=e["s-apps"],s=0,o=0;o<r.length;o++)if(e[r[o]].componentOnReady){if(e[r[o]].componentOnReady(t,n))return;s++}if(s<r.length)return void(e["s-cr"]=e["s-cr"]||[]).push([t,n])}n(null)}return e.Promise?new e.Promise(n):{then:n}})}(e,0,u),s=s||p.resourcesUrl,l=(d=t.querySelectorAll("script")).length-1;l>=0&&!(m=d[l]).src&&!m.hasAttribute("data-resources-url");l--);d=m.getAttribute("data-resources-url"),!s&&d&&(s=d),!s&&m.src&&(s=(d=m.src.split("/").slice(0,-1)).join("/")+(d.length?"/":"")+"payment/"),l=t.createElement("script"),function(e,t,n,r){return!(t.search.indexOf("core=esm")>0)&&(!(!(t.search.indexOf("core=es5")>0||"file:"===t.protocol)&&e.customElements&&e.customElements.define&&e.fetch&&e.CSS&&e.CSS.supports&&e.CSS.supports("color","var(--c)")&&"noModule"in n)||function(e){try{return new Function('import("")'),!1}catch(e){}return!0}())}(e,e.location,l)?l.src=s+"payment.7fbg2fen.js":(l.src=s+"payment.o9eijd71.js",l.setAttribute("type","module"),l.setAttribute("crossorigin",!0)),l.setAttribute("data-resources-url",s),l.setAttribute("data-namespace","payment"),t.head.appendChild(l)}(window,document,0,0,0,0,0,0,[["wc-payment","ljjgtprv",0,[["abort",6],["details",1],["enabled",5],["methodData",1],["options",1],["show",6]]]],HTMLElement.prototype);</script> </head>
+<body> <wc-payment> Pay </wc-payment> <script data-build="2018-07-25T16:01:53">"serviceWorker"in navigator&&"file:"!==location.protocol&&window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").then(function(n){n.onupdatefound=function(){var e=n.installing;e.onstatechange=function(){"installed"===e.state&&window.dispatchEvent(new Event("swUpdate"))}}}).catch(function(n){console.error("service worker error",n)})});</script> </body></html>

@@ -1,12 +1,10 @@
 exports.config = {
   namespace: 'payment',
-  generateDistribution: true,
   bundles: [
-    { components: ['st-payment'] }
+    { components: ['wc-payment'] }
+  ],
+  outputTargets: [
+    { type: 'www' },
+    { type: 'dist' }
   ]
 };
-
-exports.devServer = {
-  root: 'www',
-  watchGlob: '**/**'
-}
